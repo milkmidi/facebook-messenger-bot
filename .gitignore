@@ -1,0 +1,9 @@
+/dist/
+/build/
+/node_modules/
+/public
+/_doc
+env.config.js
+npm-debug.log
+yarn.lock
+package-lock.json

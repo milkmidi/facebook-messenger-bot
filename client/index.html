@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FB Messenger Test</title>
+  <meta property="og:title" />
+  <meta property="og:description" />
+  <meta property="og:url" />
+  <meta property="og:image" />
+  <meta property="og:type" content="website" />
+  <meta name="description" />
+  <meta name="keywords" />
+  <meta id="viewport" name="viewport" content="width=device-width" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//connect.facebook.net/zh_TW/sdk.js"></script>
+  <style>
+    body {
+      font-family: "微軟正黑體";
+    }
+    .step {
+      border: 1px solid black;
+      margin: 20px 0;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="fb-root"></div>
+
+  <!--
+    <div class="step1 step">
+        <p>Step1 Facebook Connect</p>
+        <button class="fb_login_btn">FBLogin</button>
+    </div>
+    -->
+
+
+  <div class="step1 step">
+    <p>Step1 按一下 發送至 Messenger，使用者必需同意授權才能主動發訊息</p>
+    <div class="fb-send-to-messenger" messenger_app_id="1135381269835082" page_id="1459012337477173" data-ref="PASS_THROUGH_PARAM_9527" color="blue" size="standard">
+    </div>
+    <!--fb-send-to-messenger-->
+  </div>
+
+  <div class="step2 step">
+    <p>Step2 點一下 Messenger 的訊息按鈕，就可以直接開啟 Messenger App</p>
+    <div class="fb-messengermessageus" messenger_app_id="1135381269835082" page_id="1459012337477173" color="blue" size="xlarge">
+    </div>
+    <!--fb-messengermessageus-->
+  </div>
+
+  <script>
+    /*global FB*/
+    /*global $*/
+    $(function() {
+      console.log('app')
+      FB.init({
+        appId: '1135381269835082',
+        xfbml: true,
+        version: 'v2.6'
+      });
+      FB.Event.subscribe("send_to_messenger", function(req) {
+        console.log('send_to_messenger');
+        console.log(req)
+      });
+      FB.getLoginStatus(handleSessionResponse);
+      var accessToken = '';
+      function handleSessionResponse(response) {
+        console.log(response);
+        if (response.status == 'connected') {
+          //$('.fb_login_btn').hide();
+          accessToken = response.authResponse.accessToken;
+          //$('.fb-send-to-messenger').attr("data-ref", accessToken );
+        }
+      }
+      /*
+      $('.fb_login_btn').click(function() {
+          FB.login(handleSessionResponse, { scope: '' });
+      })*/
+      /*
+        FB.XFBML.parse(document.body,function(){
+                    $('.fb-send-to-messenger').show()
+                });*/
+      // $('.fb-send-to-messenger').hide();
+      /*
+       $('.submit').click(function () {
+           $('.fb-send-to-messenger').attr("data-ref",$('.input').val() );
+           FB.XFBML.parse(document.body,function(){
+               $('.fb-send-to-messenger').show()
+           })
+       })*/
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+{
+  "presets": [
+    ["env", {
+      "modules": false,
+      "useBuiltIn": true,
+      "targets": {
+        "node": true,
+        "browsers": [
+          "last 2 versions"
+        ]
+      }
+    }],
+    "stage-0",
+    "react",
+    "jest"
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types"
+      ]
+    },
+    "test": {
+      "plugins": [
+        "transform-es2015-modules-commonjs",
+        "dynamic-import-node"
+      ]
+    }
+  },
+  "plugins": [
+    "transform-runtime",
+    ["module-resolver", {
+      "alias": {
+        "~": "./",
+        "@": "./f2e/js",
+        "common": "./common"
+      }
+    }]
+  ]
+}

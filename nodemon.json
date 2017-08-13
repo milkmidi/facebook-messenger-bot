@@ -1,0 +1,15 @@
+{
+  "ignore": [
+    "f2e/*",
+    "script/",
+    "public/",
+    "node_modules/*",
+    "webpack.config.js",
+    "package.json",
+    "internal/*",
+    "jsconfig.json",
+    "READEME.md",
+    "env.config.js",
+    ".eslintrc.js"
+  ]
+}
