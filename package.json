@@ -3,8 +3,10 @@
   "version": "0.0.2",
   "description": "fb messager webhook",
   "main": "server.js",
-  "repository": "",
   "author": "milkmidi",
+  "scripts": {
+    "start":"nodemon server"
+  },
   "dependencies": {
     "axios": "^0.16.2",
     "babel-core": "^6.25.0",
